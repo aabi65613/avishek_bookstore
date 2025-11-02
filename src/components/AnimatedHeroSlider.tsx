@@ -1,48 +1,27 @@
-// src/components/AnimatedHeroSlider.tsx - FINAL REFINEMENT FOR VISUAL AESTHETIC
+// src/components/AnimatedHeroSlider.tsx - FINAL REFINEMENT WITH PRODUCT DATA AND TILT EFFECT
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { demoProducts } from '@/data/products';
+import { useCart } from '@/context/CartContext';
 
-interface SlideContent {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  price: string;
-  color: string;
-}
+// Currency formatter defined INLINE
+const formatCurrency = (amount: number): string => {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 2,
+  }).format(amount);
+};
 
 const AnimatedHeroSlider: React.FC = () => {
+  const { addToCart } = useCart();
+  // Use the first 3 products for the slider
+  const slides = demoProducts.slice(0, 3); 
+  
   const [currentSlide, setCurrentSlide] = useState(1); // Start at center slide
   const [isAutoPlay, setIsAutoPlay] = useState(true);
-
-  const slides: SlideContent[] = [
-    {
-      id: 0,
-      title: "Hydrating Face Cream",
-      subtitle: "Skincare",
-      description: "A light yet deeply hydrating face cream suitable for all skin types.",
-      price: "$29.99",
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      id: 1,
-      title: "Vitamin C Brightening Serum",
-      subtitle: "Skincare",
-      description: "Boost your skin's radiance with this potent Vitamin C Serum. Fights dullness and evens skin tone.",
-      price: "$45.50",
-      color: "from-primary-color to-slate-800",
-    },
-    {
-      id: 2,
-      title: "The Midnight Library",
-      subtitle: "Book",
-      description: "A novel about a woman who gets a chance to revisit the lives she could have lived.",
-      price: "$18.99",
-      color: "from-purple-500 to-purple-600",
-    },
-  ];
 
   // Auto-play carousel
   useEffect(() => {
@@ -77,6 +56,7 @@ const AnimatedHeroSlider: React.FC = () => {
         {/* Slides Container */}
         <div className="relative w-full h-full flex items-center justify-center">
           {slides.map((slide, index) => {
+            // Calculate the position relative to the current slide
             const position = (index - currentSlide + slides.length) % slides.length;
             let translateX = 0;
             let scale = 1;
@@ -84,26 +64,30 @@ const AnimatedHeroSlider: React.FC = () => {
             let zIndex = 10;
             let filter = "brightness(1)";
             let pointerEvents = "auto";
+            let transformSkew = "none";
 
             if (position === 1) {
               // Center stable slide
               translateX = 0;
               scale = 1;
               zIndex = 20;
+              transformSkew = "none";
             } else if (position === 0) {
-              // Left curved slide (partially visible)
+              // Left side slide (partially visible)
               translateX = -50; // Pull it slightly to the left
               scale = 0.9;
               zIndex = 10;
               filter = "brightness(0.8)";
               pointerEvents = "none";
+              transformSkew = "skewY(2deg)"; // Slight tilt
             } else if (position === 2) {
-              // Right curved slide (partially visible)
+              // Right side slide (partially visible)
               translateX = 50; // Push it slightly to the right
               scale = 0.9;
               zIndex = 10;
               filter = "brightness(0.8)";
               pointerEvents = "none";
+              transformSkew = "skewY(-2deg)"; // Slight tilt
             }
 
             return (
@@ -111,7 +95,7 @@ const AnimatedHeroSlider: React.FC = () => {
                 key={slide.id}
                 className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-full transition-all duration-700 ease-out"
                 style={{
-                  transform: `translateX(${translateX}%) scale(${scale})`,
+                  transform: `translateX(${translateX}%) scale(${scale}) ${transformSkew}`,
                   opacity,
                   zIndex,
                   filter,
@@ -123,13 +107,12 @@ const AnimatedHeroSlider: React.FC = () => {
                   style={{
                     // Custom curvature for the side slides
                     borderRadius: position === 1 ? "20px" : "50px",
-                    // The image shows a white card, so we use white background
                   }}
                 >
                   {/* Content */}
                   <div className="relative z-10 text-center">
                     <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
-                      {slide.subtitle}
+                      {slide.category}
                     </h3>
                     <h2
                       className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight"
@@ -139,15 +122,16 @@ const AnimatedHeroSlider: React.FC = () => {
                     <p
                       className="text-lg font-bold text-primary-color mb-4"
                     >
-                      {slide.price}
+                      {formatCurrency(slide.price)}
                     </p>
                     <p
-                      className="text-base text-gray-700 max-w-xl mx-auto mb-6"
+                      className="text-base text-gray-700 max-w-xl mx-auto mb-6 line-clamp-2"
                     >
                       {slide.description}
                     </p>
                     
                     <button
+                      onClick={() => addToCart(slide)}
                       className="bg-primary-color text-white px-6 py-3 rounded-full font-bold text-lg transition-all duration-300 hover:bg-secondary-color hover:scale-105"
                     >
                       Add to Cart
