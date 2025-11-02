@@ -38,7 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   return (
     <>
       <div
-        className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 border border-gray-100 hover:shadow-xl hover:scale-[1.03] transform"
+        className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 border border-gray-100 hover:shadow-2xl hover:scale-[1.03] hover:rotate-1 transform"
         style={{
           animation: `slideInUp 0.6s ease-out ${index * 0.05}s both`,
         }}
