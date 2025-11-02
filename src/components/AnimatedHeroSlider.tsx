@@ -77,16 +77,16 @@ const AnimatedHeroSlider: React.FC = () => {
               translateX = -50; // Pull it slightly to the left
               scale = 0.9;
               zIndex = 10;
-              filter = "brightness(0.8)";
-              pointerEvents = "none";
+              // filter = "brightness(0.8)";
+              // pointerEvents = "none";
               transformSkew = "skewY(2deg)"; // Slight tilt
             } else if (position === 2) {
               // Right side slide (partially visible)
               translateX = 50; // Push it slightly to the right
               scale = 0.9;
               zIndex = 10;
-              filter = "brightness(0.8)";
-              pointerEvents = "none";
+              // filter = "brightness(0.8)";
+              // pointerEvents = "none";
               transformSkew = "skewY(-2deg)"; // Slight tilt
             }
 
