@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import AnimatedHeroSlider from '@/components/AnimatedHeroSlider';
+import SimpleProductSlider from '@/components/SimpleProductSlider';
 import CategoryNavigation from '@/components/CategoryNavigation';
 import CategorySection from '@/components/CategorySection';
 import { demoProducts, getCategories } from '@/data/products';
@@ -26,9 +26,9 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Animated Hero Slider - NEW COMPONENT */}
+      {/* Simple Product Slider - NEW COMPONENT */}
       <section>
-        <AnimatedHeroSlider />
+        <SimpleProductSlider />
       </section>
 
       {/* Category Navigation Bar */}
