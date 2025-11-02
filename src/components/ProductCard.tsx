@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
       <div
         className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 border border-gray-100 hover:shadow-2xl hover:scale-[1.03] hover:rotate-1 transform"
         style={{
-          animation: `slideInUp 0.6s ease-out ${index * 0.05}s both`,
+          animation: `slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s both`,
         }}
       >
         {/* Clickable Image */}
@@ -103,16 +103,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
       />
 
       <style jsx>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) translateY(20px); /* Slide from left and up */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
       `}</style>
     </>
   );
