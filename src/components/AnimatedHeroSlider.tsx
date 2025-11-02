@@ -1,15 +1,16 @@
-// src/components/AnimatedHeroSlider.tsx - HORIZONTAL CAROUSEL WITH CURVED SIDES
+// src/components/AnimatedHeroSlider.tsx - FINAL REFINEMENT FOR VISUAL AESTHETIC
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface SlideContent {
   id: number;
   title: string;
   subtitle: string;
   description: string;
+  price: string;
   color: string;
-  icon: string;
 }
 
 const AnimatedHeroSlider: React.FC = () => {
@@ -19,27 +20,27 @@ const AnimatedHeroSlider: React.FC = () => {
   const slides: SlideContent[] = [
     {
       id: 0,
-      title: "Stationery & Writing",
-      subtitle: "Premium Collection",
-      description: "Discover our finest selection of pens, notebooks, and writing essentials.",
+      title: "Hydrating Face Cream",
+      subtitle: "Skincare",
+      description: "A light yet deeply hydrating face cream suitable for all skin types.",
+      price: "$29.99",
       color: "from-blue-500 to-blue-600",
-      icon: "✏️",
     },
     {
       id: 1,
-      title: "Discover Our Premium Collection",
-      subtitle: "Welcome to Books.shyamnagar",
-      description: "Discount beyond your expectations. Shop the latest styles and quality products delivered fast.",
+      title: "Vitamin C Brightening Serum",
+      subtitle: "Skincare",
+      description: "Boost your skin's radiance with this potent Vitamin C Serum. Fights dullness and evens skin tone.",
+      price: "$45.50",
       color: "from-primary-color to-slate-800",
-      icon: "🎁",
     },
     {
       id: 2,
-      title: "Art & Craft",
-      subtitle: "Creative Supplies",
-      description: "Explore our amazing collection of art supplies, brushes, and craft materials.",
+      title: "The Midnight Library",
+      subtitle: "Book",
+      description: "A novel about a woman who gets a chance to revisit the lives she could have lived.",
+      price: "$18.99",
       color: "from-purple-500 to-purple-600",
-      icon: "🎨",
     },
   ];
 
@@ -70,7 +71,7 @@ const AnimatedHeroSlider: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <div className="relative w-full bg-white overflow-hidden">
       {/* Main Carousel Container */}
       <div className="relative h-96 md:h-[500px] flex items-center justify-center px-4 py-8">
         {/* Slides Container */}
@@ -79,90 +80,79 @@ const AnimatedHeroSlider: React.FC = () => {
             const position = (index - currentSlide + slides.length) % slides.length;
             let translateX = 0;
             let scale = 1;
-            let opacity = 0;
-            let zIndex = 0;
-            let borderRadius = "0px";
+            let opacity = 1;
+            let zIndex = 10;
+            let filter = "brightness(1)";
+            let pointerEvents = "auto";
 
-            if (position === 0) {
-              // Left curved slide
-              translateX = -100;
-              scale = 0.75;
-              opacity = 0.6;
-              zIndex = 1;
-              borderRadius = "0 50px 50px 0"; // Curved right side
-            } else if (position === 1) {
+            if (position === 1) {
               // Center stable slide
               translateX = 0;
               scale = 1;
-              opacity = 1;
+              zIndex = 20;
+            } else if (position === 0) {
+              // Left curved slide (partially visible)
+              translateX = -50; // Pull it slightly to the left
+              scale = 0.9;
               zIndex = 10;
-              borderRadius = "20px";
+              filter = "brightness(0.8)";
+              pointerEvents = "none";
             } else if (position === 2) {
-              // Right curved slide
-              translateX = 100;
-              scale = 0.75;
-              opacity = 0.6;
-              zIndex = 1;
-              borderRadius = "50px 0 0 50px"; // Curved left side
+              // Right curved slide (partially visible)
+              translateX = 50; // Push it slightly to the right
+              scale = 0.9;
+              zIndex = 10;
+              filter = "brightness(0.8)";
+              pointerEvents = "none";
             }
 
             return (
               <div
                 key={slide.id}
-                className="absolute w-full max-w-2xl h-full transition-all duration-700 ease-out"
+                className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-full transition-all duration-700 ease-out"
                 style={{
                   transform: `translateX(${translateX}%) scale(${scale})`,
                   opacity,
                   zIndex,
+                  filter,
+                  pointerEvents,
                 }}
               >
                 <div
-                  className={`relative w-full h-full bg-gradient-to-br ${slide.color} rounded-3xl shadow-2xl overflow-hidden flex flex-col items-center justify-center p-8 text-white`}
+                  className={`relative w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col items-center justify-center p-8 text-text-color border border-gray-100`}
                   style={{
-                    borderRadius,
+                    // Custom curvature for the side slides
+                    borderRadius: position === 1 ? "20px" : "50px",
+                    // The image shows a white card, so we use white background
                   }}
                 >
-                  {/* Background blur effect */}
-                  <div className="absolute inset-0 bg-black/20" />
-
                   {/* Content */}
                   <div className="relative z-10 text-center">
-                    <div
-                      className="text-6xl md:text-7xl mb-4"
-                      style={{
-                        animation: `slideInUp 0.6s ease-out ${index * 0.1}s both`,
-                      }}
-                    >
-                      {slide.icon}
-                    </div>
+                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
+                      {slide.subtitle}
+                    </h3>
                     <h2
-                      className="text-3xl md:text-5xl font-extrabold mb-3 leading-tight"
-                      style={{
-                        animation: `slideInUp 0.6s ease-out ${index * 0.1 + 0.1}s both`,
-                      }}
+                      className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight"
                     >
                       {slide.title}
                     </h2>
                     <p
-                      className="text-lg md:text-xl font-semibold mb-4 text-white/90"
-                      style={{
-                        animation: `slideInUp 0.6s ease-out ${index * 0.1 + 0.2}s both`,
-                      }}
+                      className="text-lg font-bold text-primary-color mb-4"
                     >
-                      {slide.subtitle}
+                      {slide.price}
                     </p>
                     <p
-                      className="text-base md:text-lg text-white/80 max-w-xl mx-auto"
-                      style={{
-                        animation: `slideInUp 0.6s ease-out ${index * 0.1 + 0.3}s both`,
-                      }}
+                      className="text-base text-gray-700 max-w-xl mx-auto mb-6"
                     >
                       {slide.description}
                     </p>
+                    
+                    <button
+                      className="bg-primary-color text-white px-6 py-3 rounded-full font-bold text-lg transition-all duration-300 hover:bg-secondary-color hover:scale-105"
+                    >
+                      Add to Cart
+                    </button>
                   </div>
-
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
               </div>
             );
@@ -172,46 +162,16 @@ const AnimatedHeroSlider: React.FC = () => {
         {/* Navigation Arrows */}
         <button
           onClick={handlePrevSlide}
-          className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-primary-color p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
-          style={{
-            animation: 'slideInFromLeft 0.6s ease-out 0.3s both',
-          }}
+          className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-primary-color p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
+          <ArrowLeft size={24} />
         </button>
 
         <button
           onClick={handleNextSlide}
-          className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-primary-color p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
-          style={{
-            animation: 'slideInFromRight 0.6s ease-out 0.3s both',
-          }}
+          className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/80 hover:bg-white text-primary-color p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          <ArrowRight size={24} />
         </button>
       </div>
 
@@ -226,47 +186,9 @@ const AnimatedHeroSlider: React.FC = () => {
                 ? 'bg-primary-color w-8 h-3'
                 : 'bg-gray-300 w-3 h-3 hover:bg-gray-400'
             }`}
-            style={{
-              animation: `slideInUp 0.6s ease-out ${index * 0.1 + 0.4}s both`,
-            }}
           />
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slideInFromLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes slideInFromRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </div>
   );
 };
