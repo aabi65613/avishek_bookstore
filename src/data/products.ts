@@ -59,61 +59,7 @@ export const demoProducts: Product[] = [
     description: "Comfortable",
     imageUrl: "/IMG_20251011_221833_765.jpg", 
   },
-  // Product 7: Candle Set (using original uploaded name 1000486851.jpg)
-  {
-    id: 7,
-    category: "Gifts",
-    title: "Scented Candle Set",
-    price: 29.99,
-    description: "Set of 3 relaxing aromatherapy candles.",
-    imageUrl: "/1000486851.jpg", 
-  },
-  // Product 8: Using uploaded image 1000486856.jpg
-  {
-    id: 8,
-    category: "Gifts",
-    title: "Personalized Mug",
-    price: 12.50,
-    description: "Customizable mug, perfect for any occasion.",
-    imageUrl: "/1000486856.jpg", 
-  },
-  // Product 9: Using uploaded image 1000486857.jpg
-  {
-    id: 9,
-    category: "Experimental Items",
-    title: "DIY Terrarium Kit",
-    price: 120.0,
-    description: "Create your own mini ecosystem.",
-    imageUrl: "/1000486857.jpg", 
-  },
-  // Product 10: Using uploaded image 1000486858.jpg
-  {
-    id: 10,
-    category: "Experimental Items",
-    title: "Levitating Plant Pot",
-    price: 89.99,
-    description: "A unique pot that floats using magnetic levitation.",
-    imageUrl: "/1000486858.jpg", 
-  },
-  // Product 11: Using uploaded image 1000486850.jpg
-  {
-    id: 11,
-    category: "Books",
-    title: "The Midnight Library",
-    price: 16.50,
-    description: "A novel about choices, regrets, and finding hope.",
-    imageUrl: "/1000486850.jpg", 
-  },
-  // Product 12: Using uploaded image 1000486455.jpg
-  {
-    id: 12,
-    category: "Skincare",
-    title: "Gentle Face Cleanser",
-    price: 19.99,
-    description: "Removes impurities without drying the skin.",
-    imageUrl: "/1000486455.jpg", 
-  },
-  // Product 13: Red Plastic Tape Dispenser (using IMG_20251101_155800_289.jpg)
+    // Product 13: Red Plastic Tape Dispenser (using IMG_20251101_155800_289.jpg)
   {
     id: 13,
     category: "School Supplies",
