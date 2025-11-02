@@ -10,14 +10,14 @@ export const demoProducts: Product[] = [
     id: 1,
     category: "Brushes & Tools",
     title: "Extremely Soft Brush",
-    price: 25.00,
+    price: 65.0,
     description: "Brushes that reach every corner of your teeth.",
     imageUrl: "/IMG_20251011_221013_733.jpg", 
   }, 
   // Product 2: Pen (using IMG_20251011_221616_284.jpg)
   {
     id: 2,
-    category: "Stationery",
+    category: "Office Supplies",
     title: "golden roopon",
     price: 11.00,
     description: " exta shine.",
@@ -28,7 +28,7 @@ export const demoProducts: Product[] = [
     id: 3,
     category: "Art Supplies",
     title: "Water Color Set",
-    price: 50.00,
+    price: 20.0,
     description: "Premium quality set at a heavy discount.",
     imageUrl: "/IMG_20251011_221652_317.jpg", 
   },
@@ -44,9 +44,9 @@ export const demoProducts: Product[] = [
   // Product 5: Glue (using IMG_20251011_221826_587.jpg)
   {
     id: 5,
-    category: "Hobby & Craft",
+    category: "Decorative",
     title: "3D Printed Glue",
-    price: 99.00,
+    price: 100.0,
     description: "Beginner friendly design helper",
     imageUrl: "/IMG_20251011_221826_587.jpg", 
   },
@@ -82,7 +82,7 @@ export const demoProducts: Product[] = [
     id: 9,
     category: "Experimental Items",
     title: "DIY Terrarium Kit",
-    price: 45.00,
+    price: 120.0,
     description: "Create your own mini ecosystem.",
     imageUrl: "/1000486857.jpg", 
   },
@@ -116,118 +116,118 @@ export const demoProducts: Product[] = [
   // Product 13: Red Plastic Tape Dispenser (using IMG_20251101_155800_289.jpg)
   {
     id: 13,
-    category: "Stationery",
-    title: "Heavy-Duty Tape Dispenser",
-    price: 150.00, // Estimated INR price
-    description: "A durable, heavy-duty red plastic tape dispenser with a serrated cutter, perfect for desktop use in homes, offices, or schools.",
+    category: "School Supplies",
+    title: "Red Desktop Tape Dispenser (Heavy Duty)",
+    price: 325.0, // Estimated INR price
+    description: "A heavy-duty, large red desktop tape dispenser, suitable for office or shop use.",
     imageUrl: "/IMG_20251101_155800_289.jpg", 
   },
   // Product 14: Princess Pencil Box (using IMG_20251101_155848_253.jpg)
   {
     id: 14,
-    category: "Stationery",
-    title: "Princess Stationery Pouch",
-    price: 199.00, // Estimated INR price
-    description: "A vibrant, pink-themed pencil pouch featuring popular princess characters. Ideal for school children to organize their pens, pencils, and other stationery.",
+    category: "Craft Material",
+    title: "Princess-Themed Pencil/Stationery Pouch (Pink)",
+    price: 115.0, // Estimated INR price
+    description: "A pink, soft material, princess-themed pencil or stationery pouch.",
     imageUrl: "/IMG_20251101_155848_253.jpg", 
   },
   // Product 15: Camlin Unruled Notebook (using IMG_20251101_161203_085.jpg)
   {
     id: 15,
-    category: "Handwritten Book/Copy",
-    title: "Camlin Unruled Notebook (Plain Cover)",
-    price: 40.00, // Estimated INR price
-    description: "A standard, high-quality Camlin unruled notebook. Perfect for general note-taking, drawing, and school work.",
+    category: "Notebooks & Diaries",
+    title: "Camlin Notebook (Marker Description Back Cover)",
+    price: 120.0, // Estimated INR price
+    description: "A Camlin notebook with a back cover showing marker descriptions. High-quality paper for notes and writing.",
     imageUrl: "/IMG_20251101_161203_085.jpg", 
   },
   // Product 16: Camlin Unruled Notebook (Bicycle Cover) (using IMG_20251101_161216_390.jpg)
   {
     id: 16,
-    category: "Handwritten Book/Copy",
-    title: "Camlin Unruled Notebook (Bicycle Cover)",
+    category: "Notebooks & Diaries",
+    title: "Camlin Notebook (Cycling Cover)",
     price: 45.00,
-    description: "A high-quality, unruled notebook from Camlin, featuring a vibrant bicycle cover design. Ideal for sketching, note-taking, or creative writing. Standard A4 size, 100 pages.",
+    description: "A Camlin notebook featuring a front cover with a cycling image. High-quality paper for notes and writing.",
     imageUrl: "/IMG_20251101_161216_390.jpg",
   },
   // Product 17: Set of 6 Colorful Gel Pens (using IMG_20251101_161308_512.jpg)
   {
     id: 17,
-    category: "Stationery",
-    title: "Set of 6 Colorful Gel Pens",
-    price: 99.00,
-    description: "A set of six smooth-writing gel pens in assorted vibrant colors. Perfect for highlighting, journaling, and adding a splash of color to notes and artwork.",
+    category: "Craft Material",
+    title: "Bag of Pink Star-Shaped Craft Embellishments",
+    price: 25.0,
+    description: "A bag of pink, star-shaped craft embellishments. Ideal for adding sparkle to DIY projects.",
     imageUrl: "/IMG_20251101_161308_512.jpg",
   },
   // Product 18: Cartoon Character Eraser Set (using IMG_20251101_161313_144.jpg)
   {
     id: 18,
-    category: "Stationery",
-    title: "Cartoon Character Eraser Set",
-    price: 30.00,
-    description: "A fun set of erasers shaped like popular cartoon characters. High-quality rubber for clean, smudge-free erasing. Great for kids and collectors.",
+    category: "Decorative",
+    title: "Bag of Gold Sequins/Spangles (Round)",
+    price: 100.0,
+    description: "A bag of round gold sequins/spangles for craft embellishments, scrapbooking, and decoration.",
     imageUrl: "/IMG_20251101_161313_144.jpg",
   },
   // Product 19: Transparent Geometry Box/Pencil Case (using IMG_20251101_161329_092.jpg)
   {
     id: 19,
-    category: "Stationery",
-    title: "Transparent Geometry Box/Pencil Case",
-    price: 120.00,
-    description: "A durable, transparent plastic pencil case or geometry box. Provides clear visibility of contents, making it easy to find pens, pencils, and other small stationery items.",
+    category: "Decorative",
+    title: "Indian National Flags (Small Stick Flags, Bundle)",
+    price: 20.0,
+    description: "A wrapped bundle of small Indian National Flags on sticks.",
     imageUrl: "/IMG_20251101_161329_092.jpg",
   },
   // Product 20: Miniature Stapler and Pin Set (using IMG_20251101_161348_044.jpg)
   {
     id: 20,
-    category: "Stationery",
-    title: "Miniature Stapler and Pin Set",
-    price: 75.00,
-    description: "A compact, easy-to-carry miniature stapler with a box of pins. Ideal for quick fixes, school projects, and portable office use.",
+    category: "Decorative",
+    title: "Indian National Flags (Small Stick Flags, Wrapped)",
+    price: 20.0,
+    description: "A bundle of small Indian National Flags on sticks, wrapped for retail sale.",
     imageUrl: "/IMG_20251101_161348_044.jpg",
   },
   // Product 21: Colorful Paper Clips and Binder Clips Set (using IMG_20251101_161350_955.jpg)
   {
     id: 21,
-    category: "Stationery",
-    title: "Colorful Paper Clips and Binder Clips Set",
+    category: "Writing Supplies",
+    title: "Indian National Flags (Small Stick Flags)",
     price: 50.00,
-    description: "An assortment of colorful paper clips and small binder clips for organizing documents and papers. Comes in a reusable plastic container.",
+    description: "Small Indian National Flags mounted on sticks, perfect for decoration, display, or patriotic events.",
     imageUrl: "/IMG_20251101_161350_955.jpg",
   },
   // Product 22: Large Capacity Pencil Pouch (Blue) (using IMG_20251101_161455_212.jpg)
   {
     id: 22,
-    category: "Stationery",
-    title: "Large Capacity Pencil Pouch (Blue)",
-    price: 150.00,
-    description: "A spacious, durable blue fabric pencil pouch with a zipper closure. Designed to hold a large number of pens, pencils, markers, and other school supplies.",
+    category: "School Supplies",
+    title: "Classmate BFast Ball Pen Box (Pack)",
+    price: 90.0,
+    description: "A box pack of Classmate BFast Ball Pens.",
     imageUrl: "/IMG_20251101_161455_212.jpg",
   },
   // Product 23: Set of 12 Color Pencils (using IMG_20251101_161504_020.jpg)
   {
     id: 23,
-    category: "Stationery",
-    title: "Set of 12 Color Pencils",
-    price: 120.00,
-    description: "A standard set of 12 high-quality color pencils. Features smooth lead for vibrant coloring and shading. Perfect for students and artists.",
+    category: "Writing Supplies",
+    title: "Suzuka School Bag Cover (Cartoon Pattern)",
+    price: 175.0,
+    description: "A Suzuka School Bag Cover with a patterned cartoon ship and deer design.",
     imageUrl: "/IMG_20251101_161504_020.jpg",
   },
   // Product 24: Wooden Scale/Ruler (30cm) (using IMG_20251101_161512_767.jpg)
   {
     id: 24,
-    category: "Stationery",
-    title: "Wooden Scale/Ruler (30cm)",
+    category: "Office Supplies",
+    title: "Montex Gel Refill Box (Standard Refills)",
     price: 25.00,
-    description: "A classic 30cm wooden ruler with clear markings. Durable and essential for school, office, and crafting use.",
+    description: "A box of standard gel pen refills from Montex, approximately ₹5 per piece.",
     imageUrl: "/IMG_20251101_161512_767.jpg",
   },
   // Product 25: Assorted Fashion Jewelry Set (using jewelry.jpg)
   {
     id: 25,
-    category: "Jewelry",
-    title: "Assorted Fashion Jewelry Set",
-    price: 399.00,
-    description: "A collection of trendy fashion jewelry, including necklaces, earrings, and bracelets. Perfect for gifting or adding a stylish touch to any outfit.",
+    category: "Jewelry & Accessories",
+    title: "Silver-Tone Bell Drop Earring (Jhumka Style)",
+    price: 100.0,
+    description: "Fashion jewelry, silver-tone bell drop earrings with filigree work (jhumka style).",
     imageUrl: "/jewelry.jpg",
   },
   // Product 26: Dual-Compartment Metal Pencil Box (using pencil box.jpg)
@@ -243,9 +243,9 @@ export const demoProducts: Product[] = [
   {
     id: 27,
     category: "Hobby & Craft",
-    title: "Assorted Decorative Sticker Sheets (Pack of 10)",
+    title: "3D Decorative Butterfly Stickers/Magnets (Set)",
     price: 99.00,
-    description: "A pack of 10 sheets of assorted decorative stickers, including cartoon, floral, and motivational designs. Perfect for scrapbooking, decorating notebooks, and crafts.",
+    description: "A set of 3D decorative butterfly stickers or magnets in assorted multi-color designs.",
     imageUrl: "/stickers.jpg",
   },
   // Product 28: Premium A4 White Drawing Paper (50 Sheets) (using white page.jpg)
@@ -270,9 +270,9 @@ export const demoProducts: Product[] = [
   {
     id: 30,
     category: "Stationery",
-    title: "Set of 4 High-Quality Black Gel Pens",
-    price: 120.00,
-    description: "A set of four premium black gel pens with a fine tip for smooth, consistent writing. Quick-drying ink, perfect for professional and academic use.",
+    title: "Rent Bill Book / Receipt Book (Bharat Stationers)",
+    price: 75.0,
+    description: "A Rent Bill Book or Receipt Book from Bharat Stationers (Duplicate/Triplicate options available).",
     imageUrl: "/IMG_20251101_160046_934.jpg",
   },
 ];
