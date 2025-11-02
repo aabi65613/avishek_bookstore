@@ -25,7 +25,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background-color">
       {/* Simple Product Slider - NEW COMPONENT */}
       <section>
         <SimpleProductSlider />
@@ -40,7 +40,7 @@ const HomePage = () => {
       </section>
 
       {/* Category Sections with Products */}
-      <div className="bg-gray-50">
+      <div className="bg-transparent">
         {categories.map((category, index) => (
           <CategorySection
             key={category}
