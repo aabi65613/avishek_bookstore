@@ -1,6 +1,6 @@
 // src/app/products/[id]/page.tsx
 import { demoProducts } from '@/data/products';
-import Image from 'next/image';
+import ImageWithErrorHandler from '@/components/ImageWithErrorHandler';
 import { notFound } from 'next/navigation';
 
 // Currency formatter defined INLINE
@@ -32,17 +32,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       <div className="flex flex-col lg:flex-row gap-10">
         {/* Product Image Section */}
         <div className="lg:w-1/2 relative h-96 bg-gray-100 rounded-xl overflow-hidden shadow-lg">
-          <Image
+          <ImageWithErrorHandler
             src={product.imageUrl}
             alt={product.title}
             fill
             style={{ objectFit: 'contain' }}
             className="transition-opacity duration-500"
             sizes="(max-width: 1024px) 100vw, 50vw"
-            onError={(e) => {
-              e.currentTarget.src = "/placeholder-product.png";
-              e.currentTarget.style.objectFit = 'contain';
-            }}
+
           />
         </div>
 
