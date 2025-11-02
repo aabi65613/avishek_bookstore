@@ -1,4 +1,4 @@
-// src/components/CategoryNavigation.tsx
+// src/components/CategoryNavigation.tsx - ENHANCED WITH SMOOTH SCROLL ANIMATION
 "use client";
 
 import React, { useState } from 'react';
@@ -14,7 +14,7 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>(categories[0] || '');
 
-  // Handle smooth scroll to category section
+  // Handle smooth scroll to category section with enhanced animation
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
     onCategorySelect(category);
@@ -22,9 +22,13 @@ const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
     // Scroll to the section with smooth behavior
     const element = document.getElementById(`category-${category}`);
     if (element) {
-      setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+      // Use requestAnimationFrame for smoother animation
+      requestAnimationFrame(() => {
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start'
+        });
+      });
     }
   };
 
