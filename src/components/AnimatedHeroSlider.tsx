@@ -114,6 +114,15 @@ const AnimatedHeroSlider: React.FC = () => {
                     <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
                       {slide.category}
                     </h3>
+                    <div className="relative w-32 h-32 mx-auto mb-4">
+                      <Image
+                        src={slide.imageUrl}
+                        alt={slide.title}
+                        fill
+                        style={{ objectFit: 'contain' }}
+                        sizes="128px"
+                      />
+                    </div>
                     <h2
                       className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight"
                     >
