@@ -46,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         {/* Clickable Image */}
         <button
           onClick={handleImageClick}
-          className="relative block h-56 w-full bg-gray-100 cursor-pointer group overflow-hidden"
+          className="relative block h-48 sm:h-56 w-full bg-gray-100 cursor-pointer group overflow-hidden"
         >
           <Image
             src={product.imageUrl}
