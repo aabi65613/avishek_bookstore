@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { demoProducts } from '@/data/products';
+import Image from 'next/image';
 import { useCart } from '@/context/CartContext';
 
 // Currency formatter defined INLINE
@@ -96,6 +97,7 @@ const AnimatedHeroSlider: React.FC = () => {
                 className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-full transition-all duration-700 ease-out"
                 style={{
                   transform: `translateX(${translateX}%) scale(${scale}) ${transformSkew}`,
+                  transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.7s ease-out',
                   opacity,
                   zIndex,
                   filter,
