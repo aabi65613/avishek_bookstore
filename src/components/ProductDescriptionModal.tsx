@@ -59,14 +59,14 @@ const ProductDescriptionModal: React.FC<ProductDescriptionModalProps> = ({
 
       {/* Modal with slide and scale animation */}
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto min-h-screen"
         onClick={onClose}
         style={{
           animation: 'fadeIn 0.3s ease-out',
         }}
       >
         <div
-          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full relative my-auto"
+          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full relative"
           onClick={(e) => e.stopPropagation()}
           style={{
             animation: 'slideInUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
