@@ -237,7 +237,7 @@ export const demoProducts: Product[] = [
     title: "Dual-Compartment Metal Pencil Box",
     price: 180.00,
     description: "A sturdy, dual-compartment metal pencil box with a magnetic closure. Features a built-in sharpener and a timetable slot. Ideal for school children.",
-    imageUrl: "/pencil box.jpg",
+    imageUrl: "/pencil-box.jpg",
   },
   // Product 27: Assorted Decorative Sticker Sheets (Pack of 10) (using stickers.jpg)
   {
@@ -255,7 +255,7 @@ export const demoProducts: Product[] = [
     title: "Premium A4 White Drawing Paper (50 Sheets)",
     price: 150.00,
     description: "A pack of 50 sheets of high-quality, thick A4 white paper, ideal for drawing, sketching, and printing. Acid-free for long-lasting artwork.",
-    imageUrl: "/white page.jpg",
+    imageUrl: "/white-page.jpg",
   },
   // Product 29: Transparent Correction Tape Dispenser (using cost tape.jpg)
   {
@@ -264,7 +264,7 @@ export const demoProducts: Product[] = [
     title: "Transparent Correction Tape Dispenser",
     price: 45.00,
     description: "An easy-to-use transparent correction tape dispenser. Provides instant, clean corrections over pen, marker, or print. Essential for school and office work.",
-    imageUrl: "/cost tape.jpg",
+    imageUrl: "/cost-tape.jpg",
   },
   // Product 30: Set of 4 High-Quality Black Gel Pens (using IMG_20251101_160046_934.jpg)
   {
