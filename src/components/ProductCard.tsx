@@ -46,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         {/* Clickable Image */}
         <button
           onClick={handleImageClick}
-          className="relative block h-48 sm:h-56 w-full bg-gray-100 cursor-pointer group overflow-hidden"
+          className="relative block h-40 sm:h-56 w-full bg-gray-100 cursor-pointer group overflow-hidden"
         >
           <Image
             src={product.imageUrl}
@@ -69,7 +69,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
           </div>
         </button>
         
-        <div className="p-4 flex flex-col flex-grow">
+        <div className="p-4 flex flex-col">
           {/* Title and Category using brand colors */}
           <p className="text-xs font-medium text-secondary-color uppercase tracking-wider mb-1">
             {product.category}
@@ -81,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
           </h3>
 
           {/* Price using primary color - NOW RUPEES */}
-          <div className="text-xl font-bold text-primary-color mb-3 mt-auto">
+          <div className="text-xl font-bold text-primary-color mb-3">
             {formatCurrency(product.price)}
           </div>
 
