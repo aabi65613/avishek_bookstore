@@ -1,58 +1,131 @@
-// src/app/page.tsx - FINAL VISUAL FIX
+// src/app/page.tsx - WITH CATEGORY NAVIGATION AND ANIMATED SECTIONS
 "use client";
 
-import React from 'react';
-import ProductCard from '@/components/ProductCard';
-import { demoProducts, getCategories } from '@/data/products'; 
-// import { motion } from 'framer-motion'; // COMMENTED OUT: Build Fix
+import React, { useState } from 'react';
+import CategoryNavigation from '@/components/CategoryNavigation';
+import CategorySection from '@/components/CategorySection';
+import { demoProducts, getCategories } from '@/data/products';
 
 const HomePage = () => {
-  const products = demoProducts; // Display all products
+  const products = demoProducts;
   const categories = getCategories();
+  const [selectedCategory, setSelectedCategory] = useState<string>(categories[0] || '');
 
-  // Filter products by the first 9 available, if categories are not yet implemented fully
-  const featuredProducts = products; 
+  // Group products by category
+  const productsByCategory: { [key: string]: typeof products } = {};
+  categories.forEach((category) => {
+    productsByCategory[category] = products.filter(
+      (product) => product.category === category
+    );
+  });
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="min-h-screen">
-      
-      {/* NEW: Hero Section with Brand Colors
-        The background is now Deep Navy (var(--background-color)) 
-        Text uses Gold (var(--primary-color) and var(--secondary-color))
-      */}
-      <section className="text-center py-24 px-4 bg-background-color text-white shadow-lg">
+      {/* Hero Section with Brand Colors */}
+      <section className="text-center py-24 px-4 bg-gradient-to-br from-primary-color to-slate-800 text-white shadow-lg">
         <div className="container mx-auto">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-primary-color mb-4 leading-tight">
+          <h1 
+            className="text-5xl md:text-6xl font-extrabold text-secondary-color mb-4 leading-tight"
+            style={{
+              animation: 'fadeInDown 0.8s ease-out',
+            }}
+          >
             Discover Our Premium Collection
           </h1>
-          <p className="text-xl md:text-2xl text-secondary-color mb-8 max-w-3xl mx-auto">
+          <p 
+            className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto"
+            style={{
+              animation: 'fadeInUp 0.8s ease-out 0.2s both',
+            }}
+          >
             Discount beyond your expectations. Shop the latest styles and quality products delivered fast.
           </p>
           <a
-            href="#featured"
-            className="inline-block bg-accent-color text-text-color px-8 py-3 rounded-full font-bold text-lg transition-transform duration-300 hover:scale-105 hover:bg-opacity-90 shadow-md"
+            href="#categories"
+            className="inline-block bg-secondary-color text-white px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 hover:scale-110 hover:shadow-lg shadow-md"
+            style={{
+              animation: 'slideInUp 0.8s ease-out 0.4s both',
+            }}
           >
             Shop Now
           </a>
         </div>
       </section>
 
-      {/* Main Product Display Section */}
-      <section id="featured" className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-text-color border-b-2 border-primary-color inline-block pb-1">
-            Featured Products
-          </h2>
-        </div>
+      {/* Category Navigation Bar */}
+      <section id="categories" className="sticky top-0 z-30 bg-white shadow-md">
+        <CategoryNavigation 
+          categories={categories} 
+          onCategorySelect={handleCategorySelect}
+        />
+      </section>
 
-        {/* This grid structure applies to all products */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-          {featuredProducts.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
-          ))}
+      {/* Category Sections with Products */}
+      <div className="bg-gray-50">
+        {categories.map((category, index) => (
+          <CategorySection
+            key={category}
+            category={category}
+            products={productsByCategory[category]}
+            index={index}
+          />
+        ))}
+      </div>
+
+      {/* Footer CTA */}
+      <section className="py-16 px-4 bg-primary-color text-white text-center">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-4">Ready to Shop?</h2>
+          <p className="text-lg mb-8 text-gray-200">
+            Browse our complete collection and find exactly what you're looking for.
+          </p>
+          <a
+            href="#categories"
+            className="inline-block bg-secondary-color text-white px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 hover:scale-110 hover:shadow-lg"
+          >
+            Explore Categories
+          </a>
         </div>
       </section>
-      
+
+      <style jsx>{`
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };

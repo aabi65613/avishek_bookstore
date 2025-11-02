@@ -1,19 +1,19 @@
-// src/components/ProductCard.tsx - FINAL, CLEANED FIX
+// src/components/ProductCard.tsx - WITH MODAL TRIGGER
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/types/product';
 import { useCart } from '@/context/CartContext';
-// import { motion } from 'framer-motion'; 
+import ProductDescriptionModal from './ProductDescriptionModal';
 
 interface ProductCardProps {
   product: Product;
   index: number; 
 }
 
-// Currency formatter defined INLINE (FIXED the Module not found error)
+// Currency formatter defined INLINE
 const formatCurrency = (amount: number): string => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -24,51 +24,97 @@ const formatCurrency = (amount: number): string => {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const { addToCart } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleImageClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setIsModalOpen(false);
+  };
 
   return (
-    <div
-      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 border border-gray-100 hover:shadow-xl hover:scale-[1.03] transform"
-    >
-      <Link href={`/products/${product.id}`} className="relative block h-56 w-full">
-        <Image
-          src={product.imageUrl}
-          alt={product.title}
-          fill
-          style={{ objectFit: 'cover' }}
-          className="transition-opacity duration-500 hover:opacity-90"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-          onError={(e) => {
-             e.currentTarget.src = "/placeholder-product.png";
-             e.currentTarget.style.objectFit = 'contain';
-          }}
-        />
-      </Link>
-      
-      <div className="p-4 flex flex-col flex-grow">
-        {/* Title and Category using brand colors */}
-        <p className="text-xs font-medium text-secondary-color uppercase tracking-wider mb-1">
-          {product.category}
-        </p>
-        <h3 className="text-lg font-semibold text-text-color mb-2 truncate">
-          <Link href={`/products/${product.id}`} className="hover:text-primary-color transition-colors">
-            {product.title}
-          </Link>
-        </h3>
-
-        {/* Price using primary color - NOW RUPEES */}
-        <div className="text-xl font-bold text-primary-color mb-3 mt-auto">
-          {formatCurrency(product.price)}
-        </div>
-
-        {/* Add to Cart Button (Animated) */}
+    <>
+      <div
+        className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 border border-gray-100 hover:shadow-xl hover:scale-[1.03] transform"
+        style={{
+          animation: `slideInUp 0.6s ease-out ${index * 0.05}s both`,
+        }}
+      >
+        {/* Clickable Image */}
         <button
-          onClick={() => addToCart(product)}
-          className="w-full bg-primary-color text-white py-2 rounded-lg font-medium transition-all duration-200 hover:bg-secondary-color focus:ring-2 focus:ring-secondary-color focus:ring-offset-2"
+          onClick={handleImageClick}
+          className="relative block h-56 w-full bg-gray-100 cursor-pointer group overflow-hidden"
         >
-          Add to Cart
+          <Image
+            src={product.imageUrl}
+            alt={product.title}
+            fill
+            style={{ objectFit: 'cover' }}
+            className="transition-all duration-500 group-hover:opacity-80 group-hover:scale-110"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+            onError={(e) => {
+              e.currentTarget.src = "/placeholder-product.png";
+              e.currentTarget.style.objectFit = 'contain';
+            }}
+          />
+          
+          {/* Overlay with "View Details" text */}
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+            <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              View Details
+            </span>
+          </div>
         </button>
+        
+        <div className="p-4 flex flex-col flex-grow">
+          {/* Title and Category using brand colors */}
+          <p className="text-xs font-medium text-secondary-color uppercase tracking-wider mb-1">
+            {product.category}
+          </p>
+          <h3 className="text-lg font-semibold text-text-color mb-2 truncate">
+            <Link href={`/products/${product.id}`} className="hover:text-primary-color transition-colors">
+              {product.title}
+            </Link>
+          </h3>
+
+          {/* Price using primary color - NOW RUPEES */}
+          <div className="text-xl font-bold text-primary-color mb-3 mt-auto">
+            {formatCurrency(product.price)}
+          </div>
+
+          {/* Add to Cart Button (Animated) */}
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-primary-color text-white py-2 rounded-lg font-medium transition-all duration-200 hover:bg-secondary-color focus:ring-2 focus:ring-secondary-color focus:ring-offset-2"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Product Description Modal */}
+      <ProductDescriptionModal
+        product={product}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+
+      <style jsx>{`
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
