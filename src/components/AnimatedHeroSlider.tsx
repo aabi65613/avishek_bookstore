@@ -80,7 +80,7 @@ const AnimatedHeroSlider: React.FC = () => {
               zIndex = 10;
               // filter = "brightness(0.8)";
               // pointerEvents = "none";
-              transformSkew = "skewY(2deg)"; // Slight tilt
+              transformSkew = "none";
             } else if (position === 2) {
               // Right side slide (partially visible)
               translateX = 50; // Push it slightly to the right
@@ -88,7 +88,7 @@ const AnimatedHeroSlider: React.FC = () => {
               zIndex = 10;
               // filter = "brightness(0.8)";
               // pointerEvents = "none";
-              transformSkew = "skewY(-2deg)"; // Slight tilt
+              transformSkew = "none";
             }
 
             return (
@@ -116,12 +116,12 @@ const AnimatedHeroSlider: React.FC = () => {
                     <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
                       {slide.category}
                     </h3>
-                    <div className="relative w-32 h-32 mx-auto mb-4">
+                    <div className="relative w-full h-48 mx-auto mb-4">
                       <Image
                         src={slide.imageUrl}
                         alt={slide.title}
                         fill
-                        style={{ objectFit: 'contain' }}
+                        style={{ objectFit: 'cover' }}
                         sizes="128px"
                       />
                     </div>
