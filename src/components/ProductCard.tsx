@@ -69,26 +69,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
           </div>
         </button>
         
-        <div className="p-4 flex flex-col">
+        <div className="p-3 flex flex-col">
           {/* Title and Category using brand colors */}
-          <p className="text-xs font-medium text-secondary-color uppercase tracking-wider mb-1">
+          <p className="text-[10px] font-medium text-secondary-color uppercase tracking-wider mb-0.5">
             {product.category}
           </p>
-          <h3 className="text-lg font-semibold text-text-color mb-2 truncate">
+          <h3 className="text-base font-semibold text-text-color mb-1 truncate">
             <Link href={`/products/${product.id}`} className="hover:text-primary-color transition-colors">
               {product.title}
             </Link>
           </h3>
 
           {/* Price using primary color - NOW RUPEES */}
-          <div className="text-xl font-bold text-primary-color mb-3">
+          <div className="text-lg font-bold text-primary-color mb-2">
             {formatCurrency(product.price)}
           </div>
 
           {/* Add to Cart Button (Animated) */}
           <button
             onClick={handleAddToCart}
-            className="w-full bg-primary-color text-white py-2 rounded-lg font-medium transition-all duration-200 hover:bg-secondary-color focus:ring-2 focus:ring-secondary-color focus:ring-offset-2"
+            className="w-full bg-primary-color text-white py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-secondary-color focus:ring-2 focus:ring-secondary-color focus:ring-offset-2"
           >
             Add to Cart
           </button>

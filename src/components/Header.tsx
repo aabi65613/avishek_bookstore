@@ -23,7 +23,7 @@ const Header = () => {
 
   // Replaced motion.header with standard <header>
   return (
-    <header className={`sticky top-0 z-40 w-full text-white shadow-xl transition-all duration-300 ${isScrolled ? 'bg-primary-color/95 backdrop-blur-sm py-2' : 'bg-primary-color py-4'}`}>
+    <header className={`sticky top-0 z-40 w-full text-white shadow-xl transition-all duration-300 ${isScrolled ? 'bg-primary-color/95 py-2' : 'bg-primary-color py-4'}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo/Site Title */}
           <Link href="/" className={`font-extrabold tracking-wide text-secondary-color hover:text-white transition-all ${isScrolled ? 'text-xl' : 'text-2xl'}`}>
