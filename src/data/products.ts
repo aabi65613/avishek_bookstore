@@ -113,34 +113,6 @@ export const demoProducts: Product[] = [
     description: "A bag of round gold sequins/spangles for craft embellishments, scrapbooking, and decoration.",
     imageUrl: "/IMG_20251101_161313_144.jpg",
   },
-  // Product 19: Transparent Geometry Box/Pencil Case (using IMG_20251101_161329_092.jpg)
-  {
-    id: 19,
-    category: "Decorative",
-    title: "Indian National Flags (Small Stick Flags, Bundle)",
-    price: 20.0,
-    description: "A wrapped bundle of small Indian National Flags on sticks.",
-    imageUrl: "/IMG_20251101_161329_092.jpg",
-  },
-  // Product 20: Miniature Stapler and Pin Set (using IMG_20251101_161348_044.jpg)
-  {
-    id: 20,
-    category: "Decorative",
-    title: "Indian National Flags (Small Stick Flags, Wrapped)",
-    price: 20.0,
-    description: "A bundle of small Indian National Flags on sticks, wrapped for retail sale.",
-    imageUrl: "/IMG_20251101_161348_044.jpg",
-  },
-  // Product 21: Colorful Paper Clips and Binder Clips Set (using IMG_20251101_161350_955.jpg)
-  {
-    id: 21,
-    category: "Writing Supplies",
-    title: "Indian National Flags (Small Stick Flags)",
-    price: 50.00,
-    description: "Small Indian National Flags mounted on sticks, perfect for decoration, display, or patriotic events.",
-    imageUrl: "/IMG_20251101_161350_955.jpg",
-  },
-  // Product 22: Large Capacity Pencil Pouch (Blue) (using IMG_20251101_161455_212.jpg)
   {
     id: 22,
     category: "School Supplies",
